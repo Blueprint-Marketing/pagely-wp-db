@@ -1,6 +1,13 @@
 <?php
 
-$conf = require __DIR__.'/../../db-replay-config.php';
+if (isset($argv[1]))
+{
+	$conf = require $argv[1];
+}
+else
+{
+	$conf = require __DIR__.'/../../db-replay-config.php';
+}
 $statsFile = "/tmp/stats/$conf[name]-replay.log";
 $checkPointFile = "/tmp/stats/$conf[name]-checkpoint.txt";
 
