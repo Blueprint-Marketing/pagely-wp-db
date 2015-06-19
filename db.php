@@ -22,6 +22,7 @@ class PagelyWpdb extends wpdb
 		$this->timer_start();
 
 		$queryId = uniqid(substr(md5($query), 0, 8));
+		$query = str_replace(array("\r\n","\r","\n"), " ", $query);
 		file_put_contents($this->queryFile, "$queryId:\t$query\n", FILE_APPEND | LOCK_EX);
 
 		if ( $this->use_mysqli ) {
